@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIME - UANL | Facultad de Ingeniería Mecánica y Eléctrica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --uanl-blue: #005BA0;
+            --uanl-gold: #FFD700;
+            --uanl-dark: #003366;
+            --uanl-light: #E6F0FF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--uanl-blue), var(--uanl-dark));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            border: 3px solid var(--uanl-gold);
+        }
+        
+        .logo-text {
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 1rem;
+            color: var(--uanl-gold);
+        }
+        
+        /* Navegación */
+        nav {
+            background-color: var(--uanl-dark);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--uanl-blue);
+            color: var(--uanl-gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 91, 160, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 30px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--uanl-gold);
+            color: var(--uanl-dark);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #FFC400;
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        
+        main {
+            flex: 3;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+        
+        aside {
+            flex: 1;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+        
+        /* Carreras */
+        .careers {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .career-card {
+            background: var(--uanl-light);
+            border-left: 4px solid var(--uanl-blue);
+            padding: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .career-card h3 {
+            color: var(--uanl-dark);
+            margin-bottom: 10px;
+        }
+        
+        .career-card i {
+            color: var(--uanl-blue);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Noticias */
+        .news-container {
+            margin: 25px 0;
+        }
+        
+        .news-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-item h3 {
+            color: var(--uanl-blue);
+        }
+        
+        .news-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--uanl-dark), var(--uanl-blue));
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            border-bottom: 2px solid var(--uanl-gold);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--uanl-gold);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-cogs fa-2x" style="color: #005BA0;"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>FIME</h1>
+                    <p>Facultad de Ingeniería Mecánica y Eléctrica</p>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <a href="#" class="btn">Portal Alumnos</a>
+                <a href="#" class="btn">UANL</a>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#"><i class="fas fa-graduation-cap"></i> Oferta Educativa</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Vida Estudiantil</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero">
+        <div class="container">
+            <h2>Formando ingenieros de clase mundial</h2>
+            <p>La Facultad de Ingeniería Mecánica y Eléctrica de la UANL ofrece programas educativos de calidad, certificados por organismos nacionales e internacionales</p>
+            <a href="#" class="btn">Conoce más</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="main-content">
+            <main>
+                <h2>Bienvenidos a FIME</h2>
+                <p>La Facultad de Ingeniería Mecánica y Eléctrica (FIME) es una institución de educación superior perteneciente a la Universidad Autónoma de Nuevo León, reconocida por su excelencia académica y contribución al desarrollo industrial de México.</p>
+                
+                <h2>Nuestras Carreras</h2>
+                <div class="careers">
+                    <div class="career-card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Ingeniería en Computación</h3>
+                        <p>Formación en hardware, software y sistemas computacionales.</p>
+                    </div>
+                    <div class="career-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Ingeniería Eléctrica</h3>
+                        <p>Especialistas en sistemas de potencia y energía eléctrica.</p>
+                    </div>
+                    <div class="career-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Ingeniería Mecánica</h3>
+                        <p>Diseño, análisis y manufactura de sistemas mecánicos.</p>
+                    </div>
+                    <div class="career-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Ingeniería Mecatrónica</h3>
+                        <p>Integración de mecánica, electrónica y sistemas de control.</p>
+                    </div>
+                </div>
+                
+                <h2>Noticias y Eventos</h2>
+                <div class="news-container">
+                    <div class="news-item">
+                        <div class="news-date">15 Septiembre 2023</div>
+                        <h3>FIME recibe acreditación internacional para sus programas</h3>
+                        <p>La facultad ha obtenido la acreditación ABET para 5 de sus programas de ingeniería.</p>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">10 Septiembre 2023</div>
+                        <h3>Convocatoria para nuevo ciclo escolar</h3>
+                        <p>Ya están abiertas las inscripciones para el ciclo escolar Enero-Junio 2024.</p>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">5 Septiembre 2023</div>
+                        <h3>Feria de empleo FIME 2023</h3>
+                        <p>Las principales empresas del país visitarán la facultad para reclutar estudiantes.</p>
+                    </div>
+                </div>
+            </main>
+            
+            <aside>
+                <h3>Próximos Eventos</h3>
+                <div class="news-item">
+                    <div class="news-date">20 Septiembre 2023</div>
+                    <h4>Semana de Ingeniería</h4>
+                    <p>Conferencias y talleres con expertos de la industria.</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">25 Septiembre 2023</div>
+                    <h4>Concurso de Robótica</h4>
+                    <p>Competencia anual de robots diseñados por estudiantes.</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">30 Septiembre 2023</div>
+                    <h4>Feria de Proyectos</h4>
+                    <p>Exposición de proyectos terminales de estudiantes de último semestre.</p>
+                </div>
+                
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Sistema Académico</a></li>
+                    <li><a href="#">Biblioteca</a></li>
+                    <li><a href="#">Calendario Escolar</a></li>
+                    <li><a href="#">Bolsa de Trabajo</a></li>
+                    <li><a href="#">Investigación</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Av. Universidad S/N, Ciudad Universitaria, San Nicolás de los Garza, N.L., México</p>
+                        <p><i class="fas fa-phone"></i> (81) 8329 4000</p>
+                        <p><i class="fas fa-envelope"></i> info@fime.uanl.mx</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces importantes</h3>
+                    <ul>
+                        <li><a href="#">Directorio</a></li>
+                        <li><a href="#">Avisos Legales</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Mapa del sitio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Facultad de Ingeniería Mecánica y Eléctrica - UANL. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
